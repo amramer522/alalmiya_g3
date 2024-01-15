@@ -1,58 +1,84 @@
+import 'package:alalmiya_g3/core/logic/cache_helper.dart';
+import 'package:alalmiya_g3/get_it.dart';
+import 'package:alalmiya_g3/kiwi.dart';
+import 'package:alalmiya_g3/views/counter/view.dart';
+import 'package:alalmiya_g3/views/home/pages/favs/cubit.dart';
+import 'package:alalmiya_g3/views/home/pages/home/cubit.dart';
+import 'package:alalmiya_g3/views/my_video_player/view.dart';
+import 'package:alalmiya_g3/views/on_boarding/view.dart';
+import 'package:alalmiya_g3/views/otp/view.dart';
+import 'package:alalmiya_g3/views/product_details/cubit.dart';
+import 'package:alalmiya_g3/views/splash/view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/logic/helper_methods.dart';
-import 'views/add_address/view.dart';
-import 'views/after_on_boarding/view.dart';
-import 'views/app_info/view.dart';
-import 'views/create_new_password/view.dart';
-import 'views/edit_profile/view.dart';
-import 'views/forget_password/view.dart';
 import 'views/home/view.dart';
-import 'views/login/view.dart';
-import 'views/on_boarding/view.dart';
-import 'views/otp/view.dart';
-import 'views/payment_success/view.dart';
-import 'views/pick_location/view.dart';
-import 'views/product_details/view.dart';
-import 'views/register/view.dart';
-import 'views/splash/view.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    navigatorKey: navigatorKey,
-    theme: ThemeData(
-      scaffoldBackgroundColor: Color(0xffF4F5F7),
-      fontFamily: "Montserrat",
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: Color(0xffF9FAFB),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide(color: Color(0xffE5E7EB))),
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: BorderSide(color: Color(0xffE5E7EB))),
-      ),
-      primarySwatch: getMaterialColor(Color(0xffDD8560)),
-      dividerColor: Color(0xffA1A8B0),
-      textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.black)),
-      textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-        textStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
+  await EasyLocalization.ensureInitialized();
+
+  // initKiwi();
+  initGetIt();
+
+  runApp(
+    EasyLocalization(
+      fallbackLocale: Locale("en"),
+      startLocale: Locale("ar"),
+      path: "assets/translations",
+      supportedLocales: [Locale("ar"),Locale("en"),Locale("fr")],
+      child: const MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      navigatorKey: navigatorKey,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xffF4F5F7),
+        fontFamily: "Montserrat",
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: const Color(0xffF9FAFB),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: const BorderSide(color: Color(0xffE5E7EB))),
+          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(24), borderSide: const BorderSide(color: Color(0xffE5E7EB))),
         ),
-      )),
-      filledButtonTheme: FilledButtonThemeData(
-        style: FilledButton.styleFrom(
-          fixedSize: Size.fromHeight(56),
-          textStyle: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
+        primarySwatch: getMaterialColor(const Color(0xffDD8560)),
+        dividerColor: const Color(0xffA1A8B0),
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
+        textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+          textStyle: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        )),
+        filledButtonTheme: FilledButtonThemeData(
+          style: FilledButton.styleFrom(
+            fixedSize: const Size.fromHeight(56),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
+        // appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent, elevation: 0, titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600)),
       ),
-      appBarTheme: AppBarTheme(backgroundColor: Colors.transparent, elevation: 0, titleTextStyle: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w600)),
-    ),
-    home: PickLocationView(),
-  ));
+      home: OnBoardingView(),
+    );
+  }
 }
 
 MaterialColor getMaterialColor(Color color) {
@@ -89,6 +115,22 @@ showModelBottomSheet
 5. pin_code_fields
 6. flutter_html
 7. image_picker
+8. flutter_bloc
+9. shared_preferences
+10. flutter_screen_util
+11. google_maps
+12. url_launcher
+13. maps_launcher
+14. dotted_border
+15. shimmer
+16. lottie
+17. flutter_rating_bar
+18. video_player
+
+....
+19. audio_player
+20. record
+21. just_audio
 
 
 ---- Widgets ----
@@ -141,4 +183,22 @@ showModelBottomSheet
 47. FilledButton
 48. TabBar ( TabBarView - DefaultTabController - Tab )
 49. Form
+50. Image.file
+51. SafeArea
+52. RotatedBox
+......
+50.Flexable
+51.Chip
+52.VeritcalDivider
+53. CloseButton
+54. BackButton
+// Service Locator (Kiwi)
+// user token in post man (Bearer)
+
+
+
+// upload image to server
+// FVM
+
+
  */

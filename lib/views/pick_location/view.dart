@@ -9,7 +9,7 @@ class PickLocationView extends StatefulWidget {
 }
 
 class _PickLocationViewState extends State<PickLocationView> {
-  final companyLocation = LatLng(31.0226726, 31.3878685);
+  final companyLocation = const LatLng(31.0226726, 31.3878685);
   Set<Marker> markers = {};
 
   @override
@@ -18,9 +18,9 @@ class _PickLocationViewState extends State<PickLocationView> {
       body: GoogleMap(
         markers: markers,
         onTap: (location) {
-          print(location.latitude);
-          print(location.longitude);
-          markers.add(Marker(markerId: MarkerId("1"), position: location));
+          debugPrint(location.latitude.toString());
+          debugPrint(location.longitude.toString());
+          markers.add(Marker(markerId: const MarkerId("1"), position: location));
           setState(() {});
         },
         initialCameraPosition: CameraPosition(

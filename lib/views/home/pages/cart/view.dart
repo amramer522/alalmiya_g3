@@ -8,7 +8,7 @@ class CartPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Stack(
-          children: [
+          children: const [
             Text("Cart Page"),
 
           ],

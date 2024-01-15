@@ -2,7 +2,6 @@ import 'package:alalmiya_g3/core/logic/helper_methods.dart';
 import 'package:alalmiya_g3/views/app_info/view.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../core/design/app_input.dart';
 import '../../core/design/my_app_bar.dart';
@@ -23,17 +22,17 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
         appBar: const MyAppBar(text: "Sign Up"),
         body: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 26),
           children: [
-            AppInput(
+            const AppInput(
               prefixIcon: "user_name.png",
               labelText: "Enter your name",
             ),
-            AppInput(
+            const AppInput(
               prefixIcon: "email.png",
               labelText: "Enter your email",
             ),
-            AppInput(
+            const AppInput(
               prefixIcon: "password.png",
               labelText: "Enter your password",
               isPassword: true,
@@ -46,43 +45,43 @@ class _RegisterViewState extends State<RegisterView> {
                   child: Checkbox(
                     value: isSelected,
                     visualDensity: VisualDensity.compact,
-                    side: BorderSide(color: Color(0xffD9D9D9)),
+                    side: const BorderSide(color: Color(0xffD9D9D9)),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
                     onChanged: (value) {
-                      print(value);
+                      debugPrint(value.toString());
                       isSelected = value!;
                       setState(() {});
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 9,
                 ),
                 Expanded(
                   child: Text.rich(TextSpan(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w400,
                         height: 1.82,
                       ),
                       children: [
-                        TextSpan(text: "I agree to the medidoc "),
+                        const TextSpan(text: "I agree to the medidoc "),
                         TextSpan(
                           text: "Terms of Service",
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              navigateTo(AppInfoView(title: "Terms of Service"));
+                              navigateTo(const AppInfoView(title: "Terms of Service"));
                             },
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
                           ),
                         ),
-                        TextSpan(text: " and "),
+                        const TextSpan(text: " and "),
                         TextSpan(
                           text: "Privacy Policy",
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              navigateTo(AppInfoView(title: "Privacy Policy"));
+                              navigateTo(const AppInfoView(title: "Privacy Policy"));
                             },
                           style: TextStyle(
                             color: Theme.of(context).primaryColor,
@@ -92,20 +91,20 @@ class _RegisterViewState extends State<RegisterView> {
                 )
               ],
             ),
-            SizedBox(height: 42),
+            const SizedBox(height: 42),
             FilledButton(
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (context) => SuccessDialog(),
+                    builder: (context) => const SuccessDialog(),
                   );
                 },
-                child: Text("Sign UP")),
-            SizedBox(height: 32),
+                child: const Text("Sign UP")),
+            const SizedBox(height: 32),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Have an account?",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                 ),
@@ -113,7 +112,7 @@ class _RegisterViewState extends State<RegisterView> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("Sign In"))
+                    child: const Text("Sign In"))
               ],
             ),
           ],

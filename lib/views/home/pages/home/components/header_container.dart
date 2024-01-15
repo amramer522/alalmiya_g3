@@ -7,7 +7,7 @@ class HeaderContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 144,
-      padding: EdgeInsetsDirectional.only(start: 28, end: 28, top: 17, bottom: 16),
+      padding: const EdgeInsetsDirectional.only(start: 28, end: 28, top: 17, bottom: 16),
       width: double.infinity,
       color: Colors.white,
       child: Row(
@@ -15,14 +15,14 @@ class HeaderContainer extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                Text(
+                const Text(
                   "New Collection",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
-                Text(
+                const Text(
                   "Disscount 50% for the first transaction",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -31,20 +31,20 @@ class HeaderContainer extends StatelessWidget {
                     color: Color(0xffA1A8B0),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 8,
                 ),
                 Expanded(
                   child: FilledButton(
                     onPressed: () {},
-                    child: Text("Shop Now"),
-                    style: FilledButton.styleFrom(backgroundColor: Color(0xffDD8560), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                    style: FilledButton.styleFrom(backgroundColor: const Color(0xffDD8560), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                    child: const Text("Shop Now"),
                   ),
                 )
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 43,
           ),
           Expanded(

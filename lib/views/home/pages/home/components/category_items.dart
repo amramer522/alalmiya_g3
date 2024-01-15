@@ -23,7 +23,7 @@ class _CategoryItemsState extends State<CategoryItems> {
   Widget build(BuildContext context) {
     return Column(children: [
       Row(
-        children: [
+        children: const [
           Text(
             "Categary",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
@@ -35,10 +35,10 @@ class _CategoryItemsState extends State<CategoryItems> {
           ),
         ],
       ),
-      SizedBox(
+      const SizedBox(
         height: 18,
       ),
-      Container(
+      SizedBox(
         height: 100,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,

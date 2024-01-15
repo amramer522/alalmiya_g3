@@ -1,5 +1,5 @@
+import 'package:alalmiya_g3/core/logic/cache_helper.dart';
 import 'package:alalmiya_g3/core/logic/helper_methods.dart';
-import 'package:alalmiya_g3/views/home/view.dart';
 import 'package:alalmiya_g3/views/login/view.dart';
 import 'package:flutter/material.dart';
 
@@ -15,29 +15,29 @@ class AfterOnBoardingView extends StatelessWidget {
           children: [
             Row(
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Image.asset("assets/images/after_on_boarding1.png"),
-                Spacer(),
+                const Spacer(),
                 Column(
                   children: [
                     Image.asset("assets/images/after_on_boarding2.png"),
-                    SizedBox(
+                    const SizedBox(
                       height: 23,
                     ),
                     Image.asset("assets/images/after_on_boarding3.png"),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 33,
             ),
-            Text.rich(
+            const Text.rich(
               TextSpan(
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 children: [
@@ -48,26 +48,29 @@ class AfterOnBoardingView extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
-            Text(
+            const Text(
               "Everything you need in the world\nof fashion, old and new",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xff727272)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 62,
             ),
             FilledButton(
-              onPressed: () {
-                navigateTo(LoginView());
+              onPressed: ()async {
+                debugPrint("Start Saving");
+                // isFirstTime = false
+                await CacheHelper.setNotFirstTime();
+                navigateTo(const LoginView());
               },
-              child: Text("Get started"),
               style: FilledButton.styleFrom(
-                backgroundColor: Color(0xffDD8560),
-                fixedSize: Size.fromHeight(56)
+                backgroundColor: const Color(0xffDD8560),
+                fixedSize: const Size.fromHeight(56)
               ),
+              child: const Text("Get started"),
             )
           ],
         ),

@@ -12,11 +12,11 @@ class SocialButton extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: EdgeInsets.all(18),
+          padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(32),
-              border: Border.all(color: Color(0xffE5E7EB))
+              border: Border.all(color: const Color(0xffE5E7EB))
           ),
           child: Row(
             children: [
@@ -26,15 +26,15 @@ class SocialButton extends StatelessWidget {
                 width: 20,
                 fit: BoxFit.scaleDown,
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 text,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ),

@@ -17,29 +17,29 @@ class ForgetPasswordView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 16,),
-            Padding(
+            const SizedBox(height: 16,),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 "Forgot Your Password?",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xff101623)),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
-              child: const Text(
+              child: Text(
                 "Enter your email or your phone number, we will send you confirmation code",
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: Color(0xffA1A8B0)),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 32,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
+              margin: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(24),
@@ -57,35 +57,35 @@ class ForgetPasswordView extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Expanded(
               child: TabBarView(
                 children: [
                   ListView(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     children: [
-                      AppInput(
+                      const AppInput(
                         prefixIcon: "email.png",
                         labelText: "Enter your email",
                       ),
                       FilledButton(onPressed: () {
-                        navigateTo(OTPView());
-                      }, child: Text("Reset Password")),
+                        navigateTo(const OTPView());
+                      }, child: const Text("Reset Password")),
                     ],
                   ),
                   ListView(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     children: [
-                      AppInput(
+                      const AppInput(
                         prefixIcon: "phone.png",
                         labelText: "Enter your phone",
                       ),
                       FilledButton(onPressed: () {
-                        navigateTo(OTPView());
+                        navigateTo(const OTPView());
 
-                      }, child: Text("Reset Password")),
+                      }, child: const Text("Reset Password")),
                     ],
                   ),
                 ],

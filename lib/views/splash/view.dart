@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:alalmiya_g3/core/logic/cache_helper.dart';
 import 'package:alalmiya_g3/core/logic/helper_methods.dart';
 import 'package:alalmiya_g3/views/home/view.dart';
+import 'package:alalmiya_g3/views/login/view.dart';
 import 'package:alalmiya_g3/views/on_boarding/view.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
@@ -14,24 +16,35 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  bool isFirstTime = CacheHelper.isFirstTime;
+  bool isAuth = CacheHelper.isAuth;
+
   @override
   void initState() {
     super.initState();
-    print("Hello from initState");
-    Timer(Duration(seconds: 3), () {
-      navigateTo(OnBoardingView());
+    debugPrint("Hello from initState");
+    Timer(const Duration(seconds: 3), () {
+      if (isFirstTime) {
+        navigateTo(const OnBoardingView());
+      } else {
+        if (isAuth) {
+          navigateTo(const HomeView());
+        } else {
+          navigateTo(const LoginView());
+        }
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    print("Hello from build");
+    debugPrint("Hello from build");
 
     return Scaffold(
-      backgroundColor: Color(0xffDD8560),
+      backgroundColor: const Color(0xffDD8560),
       body: Center(
         child: Swing(
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 2),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -40,8 +53,8 @@ class _SplashViewState extends State<SplashView> {
                 height: 100,
                 width: 100,
               ),
-              SizedBox(width: 15),
-              Text(
+              const SizedBox(width: 15),
+              const Text(
                 "suits",
                 style: TextStyle(fontSize: 128, fontFamily: "Waterfall", color: Colors.white),
               )

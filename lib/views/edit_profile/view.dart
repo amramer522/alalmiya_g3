@@ -19,15 +19,15 @@ class _EditProfileViewState extends State<EditProfileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(text: "Edit Profile"),
+      appBar: const MyAppBar(text: "Edit Profile"),
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 19, horizontal: 19),
+        padding: const EdgeInsets.symmetric(vertical: 19, horizontal: 19),
         children: [
           Container(
             height: 100,
             width: 100,
             clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: BoxDecoration(shape: BoxShape.circle),
+            decoration: const BoxDecoration(shape: BoxShape.circle),
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -48,12 +48,12 @@ class _EditProfileViewState extends State<EditProfileView> {
                                     onPressed: () {
                                       pickImage(source: ImageSource.gallery);
                                     },
-                                    icon: Icon(Icons.camera)),
+                                    icon: const Icon(Icons.camera)),
                                 IconButton(
                                     onPressed: () {
                                       pickImage(source: ImageSource.camera);
                                     },
-                                    icon: Icon(Icons.camera_alt)),
+                                    icon: const Icon(Icons.camera_alt)),
                               ],
                             ));
                   },
@@ -61,17 +61,17 @@ class _EditProfileViewState extends State<EditProfileView> {
                     alignment: AlignmentDirectional.bottomCenter,
                     child: CircleAvatar(
                       backgroundColor: Colors.white.withOpacity(.4),
-                      child: Icon(Icons.camera_alt),
+                      child: const Icon(Icons.camera_alt),
                     ),
                   ),
                 )
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 14,
           ),
-          Text(
+          const Text(
             "Amr Bakr",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
@@ -82,32 +82,29 @@ class _EditProfileViewState extends State<EditProfileView> {
                result = await showModalBottomSheet(
                   context: context,
                   backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(100))),
-                  builder: (context) => Container(
-                    // color: Colors.red,
-                    child: Column(
-                      children: [
-                        Text("اختار مدينه"),
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context,"المنصوره");
-                            },
-                            child: Text("المنصوره")),
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context,"الجيزه");
-                            },
-                            child: Text("الجيزه")),
-                      ],
-                    ),
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(100))),
+                  builder: (context) => Column(
+                    children: [
+                      const Text("اختار مدينه"),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context,"المنصوره");
+                          },
+                          child: const Text("المنصوره")),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context,"الجيزه");
+                          },
+                          child: const Text("الجيزه")),
+                    ],
                   ),
                 );
                setState(() {
 
                });
-               print(result);
+               debugPrint(result);
               },
-              icon: Icon(Icons.ac_unit)),
+              icon: const Icon(Icons.ac_unit)),
           if (imageList != null)
             Wrap(
               children: List.generate(
@@ -129,18 +126,20 @@ class _EditProfileViewState extends State<EditProfileView> {
   }
 
   Future<void> pickImage({required ImageSource source}) async {
-    image = await ImagePicker().pickImage(source: source);
-    if (image != null) {
-      Navigator.pop(context);
-      print(image!.path);
-      setState(() {});
-    }
+    image = await ImagePicker().pickImage(source: source).then((value) {
+      if (image != null) {
+        Navigator.pop(context);
+        debugPrint(image!.path);
+        setState(() {});
+      }
+    });
+
   }
 
   Future<void> pickMultiImage() async {
     imageList = await ImagePicker().pickMultiImage();
     if (imageList != null) {
-      print(imageList);
+      debugPrint(imageList.toString());
       setState(() {});
     }
   }

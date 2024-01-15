@@ -13,20 +13,20 @@ class OTPView extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
-          Text(
+          const Text(
             "Enter Verification Code",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xff101623)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 11,
           ),
-          Text.rich(TextSpan(style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: Color(0xffA1A8B0)), children: [
+          const Text.rich(TextSpan(style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: Color(0xffA1A8B0)), children: [
             TextSpan(text: "Enter code that we have sent to your number"),
             TextSpan(text: " 08528188*** ", style: TextStyle(color: Color(0xff101623))),
           ])),
-          SizedBox(
+          const SizedBox(
             height: 32,
           ),
           PinCodeTextField(
@@ -48,23 +48,23 @@ class OTPView extends StatelessWidget {
               selectedColor: Theme.of(context).primaryColor,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 32,
           ),
           FilledButton(onPressed: () {
-            navigateTo(CreateNewPasswordView(),);
-          }, child: Text("Verify")),
-          SizedBox(
+            navigateTo(const CreateNewPasswordView(),);
+          }, child: const Text("Verify")),
+          const SizedBox(
             height: 24,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Didn’t receive the code?",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
               ),
-              TextButton(onPressed: () {}, child: Text("Resend"))
+              TextButton(onPressed: () {}, child: const Text("Resend"))
             ],
           ),
         ],

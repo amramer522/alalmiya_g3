@@ -23,7 +23,7 @@ class _AddAddressViewState extends State<AddAddressView> {
     return Scaffold(
       appBar: const MyAppBar(text: "Add Address"),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 38),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 38),
         child: Form(
           key: formKey,
           child: Column(
@@ -79,7 +79,7 @@ class _AddAddressViewState extends State<AddAddressView> {
             onPressed: () {
               formKey.currentState!.validate();
             },
-            child: Text("Save")),
+            child: const Text("Save")),
       )),
     );
   }

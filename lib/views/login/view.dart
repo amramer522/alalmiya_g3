@@ -1,8 +1,8 @@
+import 'package:alalmiya_g3/core/logic/cache_helper.dart';
 import 'package:alalmiya_g3/core/logic/helper_methods.dart';
 import 'package:alalmiya_g3/views/home/view.dart';
 import 'package:alalmiya_g3/views/register/view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/design/app_input.dart';
 import '../../core/design/my_app_bar.dart';
@@ -28,14 +28,14 @@ class _LoginViewState extends State<LoginView> {
       body: Form(
         key: formKey,
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 26),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 26),
           children: [
-            Center(
+            const Center(
                 child: Text(
               "Hi Welcome back, you’ve been missed",
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
             )),
-            SizedBox(height: 39),
+            const SizedBox(height: 39),
             AppInput(
               prefixIcon: "email.png",
               controller: emailController,
@@ -68,40 +68,47 @@ class _LoginViewState extends State<LoginView> {
               alignment: AlignmentDirectional.centerEnd,
               child: TextButton(
                   onPressed: () {
-                    navigateTo(ForgetPasswordView());
+                    navigateTo(const ForgetPasswordView());
                   },
-                  child: Text("Forgot Password?")),
+                  child: const Text("Forgot Password?")),
             ),
             //amramer522@gmail.com
-            SizedBox(height: 17),
+            const SizedBox(height: 17),
             FilledButton(
-              onPressed: () {
+              onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  print(emailController.text);
-                  print(passwordController.text);
-                  navigateTo(HomeView(), keepHistory: false);
+                  debugPrint(emailController.text);
+                  debugPrint(passwordController.text);
+                  //isAuth = true;
+                  debugPrint("Saving isAuth to true");
+
+                  await CacheHelper.saveUserData(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  );
+                  navigateTo(const HomeView(), keepHistory: false);
                 }
               },
-              child: Text("Login"),
+              child: const Text("Login"),
             ),
-            SizedBox(height: 17),
+            const SizedBox(height: 17),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "Don’t have an account?",
                   style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                 ),
                 TextButton(
                     onPressed: () {
-                      navigateTo(RegisterView());
+                      navigateTo(const RegisterView());
                     },
-                    child: Text("Sign Up"))
+                    child: const Text("Sign Up"))
               ],
             ),
-            SizedBox(height: 17),
+            const SizedBox(height: 17),
             Row(
-              children: [
+              children: const [
                 Expanded(child: Divider()),
                 SizedBox(
                   width: 10,
@@ -113,26 +120,26 @@ class _LoginViewState extends State<LoginView> {
                 Expanded(child: Divider()),
               ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             SocialButton(
               image: "assets/icons/google.png",
               text: "Sign in with google",
               onTap: () {
-                print("Sign in with google");
+                debugPrint("Sign in with google");
               },
             ),
             SocialButton(
               text: "Sign in with Apple",
               image: "assets/icons/apple.png",
               onTap: () {
-                print("Sign in with Apple");
+                debugPrint("Sign in with Apple");
               },
             ),
             SocialButton(
               image: "assets/icons/facebook.png",
               text: "Sign in with Facebook",
               onTap: () {
-                print("Sign in with Facebook");
+                debugPrint("Sign in with Facebook");
               },
             ),
           ],

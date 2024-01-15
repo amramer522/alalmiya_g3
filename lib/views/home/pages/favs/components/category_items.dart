@@ -16,20 +16,24 @@ class _CategoryItemsState extends State<CategoryItems> {
   Widget build(BuildContext context) {
     return Container(
       height: 29,
-      margin: EdgeInsetsDirectional.only(start: 11),
+      margin: const EdgeInsetsDirectional.only(start: 11),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
             selectedItem = index;
             setState(() {});
-            print("Hello");
-            print(selectedItem);
+            debugPrint("Hello");
+            debugPrint(selectedItem.toString());
           },
           child: Container(
             height: 29,
-            padding: EdgeInsets.symmetric(horizontal: 17),
-            margin: EdgeInsetsDirectional.only(end: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 17),
+            margin: const EdgeInsetsDirectional.only(end: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: selectedItem == index ? Colors.red : Colors.white,
+            ),
             child: Center(
               child: Text(
                 list[index],
@@ -39,10 +43,6 @@ class _CategoryItemsState extends State<CategoryItems> {
                   color: selectedItem == index ? Colors.white : Colors.black,
                 ),
               ),
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: selectedItem == index ? Colors.red : Colors.white,
             ),
           ),
         ),

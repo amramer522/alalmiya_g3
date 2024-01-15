@@ -9,23 +9,23 @@ class Item extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.only(end: 25),
+      padding: const EdgeInsetsDirectional.only(end: 25),
       child: Column(
         children: [
           Container(
             height: 50,
             width: 50,
-            padding: EdgeInsets.all(15),
+            padding: const EdgeInsets.all(15),
+            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: const Color(0xffDD8560), width: 1)),
             child: Image.network(model.image),
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Color(0xffDD8560), width: 1)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 6,
           ),
           Text(
             model.title,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xff676767)),
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xff676767)),
           )
         ],
       ),

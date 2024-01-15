@@ -1,7 +1,8 @@
 import 'package:alalmiya_g3/core/logic/helper_methods.dart';
 import 'package:alalmiya_g3/views/login/view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../core/logic/cache_helper.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -11,35 +12,39 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Profile")),
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 19, horizontal: 19),
+        padding: const EdgeInsets.symmetric(vertical: 19, horizontal: 19),
         children: [
           Container(
             height: 100,
             width: 100,
             clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: BoxDecoration(shape: BoxShape.circle),
-            child: Image.network(
-                "https://media.licdn.com/dms/image/D4D03AQFHszHTeYFKvw/profile-displayphoto-shrink_800_800/0/1663237154241?e=1704931200&v=beta&t=OgJOo9cyBXbL9NbdLoa9uhPgseTrUel1muDJUwj2KeE"),
+            decoration: const BoxDecoration(shape: BoxShape.circle),
+            child: Image.network(CacheHelper.image),
           ),
-          SizedBox(
+          const SizedBox(
             height: 14,
           ),
           Text(
-            "Amr Bakr",
+            CacheHelper.email,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
-          ItemProfile(image: "profile.png", title: "Your Profile"),
-          ItemProfile(image: "my_orders.png", title: "My Order"),
-          ItemProfile(image: "payment_methods.png", title: "Payment Methods"),
-          ItemProfile(image: "wishlist.png", title: "Wishlist"),
-          ItemProfile(image: "setting.png", title: "Setting"),
-          ItemProfile(image: "logout.png", title: "Log Out",onTap: () {
-            navigateTo(LoginView(),keepHistory: false);
-          },),
+          const ItemProfile(image: "profile.png", title: "Your Profile"),
+          const ItemProfile(image: "my_orders.png", title: "My Order"),
+          const ItemProfile(image: "payment_methods.png", title: "Payment Methods"),
+          const ItemProfile(image: "wishlist.png", title: "Wishlist"),
+          const ItemProfile(image: "setting.png", title: "Setting"),
+          ItemProfile(
+            image: "logout.png",
+            title: "Log Out",
+            onTap: () async {
+              await CacheHelper.clear();
+              navigateTo(const LoginView(), keepHistory: false);
+            },
+          ),
         ],
       ),
     );
@@ -49,6 +54,7 @@ class ProfilePage extends StatelessWidget {
 class ItemProfile extends StatelessWidget {
   final String image, title;
   final VoidCallback? onTap;
+
   const ItemProfile({Key? key, required this.image, required this.title, this.onTap}) : super(key: key);
 
   @override
@@ -56,18 +62,18 @@ class ItemProfile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.only(bottom: 16),
-        padding: EdgeInsets.symmetric(horizontal: 19, vertical: 17),
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 17),
         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(5)),
         child: Row(
           children: [
             Image.asset("assets/icons/$image", height: 20, width: 20, fit: BoxFit.scaleDown),
-            SizedBox(
+            const SizedBox(
               width: 18,
             ),
             Text(
               title,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
             )
           ],
         ),

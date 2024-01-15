@@ -1,7 +1,4 @@
-import 'package:alalmiya_g3/core/logic/helper_methods.dart';
-import 'package:alalmiya_g3/views/login/view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../core/design/app_input.dart';
 import '../../core/design/my_app_bar.dart';
@@ -15,31 +12,31 @@ class CreateNewPasswordView extends StatelessWidget {
     return Scaffold(
       appBar: const MyAppBar(),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
-          Text(
+          const Text(
             "Create New Password",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Color(0xff101623)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 11,
           ),
           const Text(
             "Create your new password to login",
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16, color: Color(0xffA1A8B0)),
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
-          AppInput(
+          const AppInput(
             prefixIcon: "password.png",
             labelText: "Enter your password",
             isPassword: true,
           ),
-          AppInput(
+          const AppInput(
             prefixIcon: "password.png",
             labelText: "Enter Confirm Password",
             isPassword: true,
@@ -48,10 +45,10 @@ class CreateNewPasswordView extends StatelessWidget {
               onPressed: () {
                 showDialog(
                   context: context,
-                  builder: (context) => SuccessDialog(),
+                  builder: (context) => const SuccessDialog(),
                 );
               },
-              child: Text("Create Password")),
+              child: const Text("Create Password")),
         ],
       ),
     );
