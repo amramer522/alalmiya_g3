@@ -29,7 +29,11 @@ void main() async {
       fallbackLocale: Locale("en"),
       startLocale: Locale("ar"),
       path: "assets/translations",
-      supportedLocales: [Locale("ar"),Locale("en"),Locale("fr")],
+      supportedLocales: [
+        Locale("ar"),
+        Locale("en"),
+        Locale("fr"),
+      ],
       child: const MyApp(),
     ),
   );
